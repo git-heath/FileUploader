@@ -4,32 +4,33 @@ File upload scenarios with asp.net core.
 
 ## Upload file using a `byte []` embedded in a model
 
-Using the `byte []` embedded in a model will force the uplaod in JSON and the file is therefore obliged to be 
+Using the `byte []` embedded in a model will force the upload in JSON and the file is therefore obliged to be 
 encoded as base64, thus increasing the request payload size by about 30%.
 
-### Advantages
+### *Advantages*
 
-- Pure JSON payloads
+- Pure JSON payloads (`Content-Type: application/json`)
 - Simpler C# model (depends only on base CLR types)
 
-### Disadvantages
+### *Disadvantages*
 
 - Larger payload due to base64 encoding obligation
 - Impractical with swagger
+- Have to add separate properties for metadata (filename, mimetype etc)
 
 ## Upload file using `IFormFile` embedded in a model
 
 Using the `IFormFile` avoid this but the payload has to be posted as a `multipart/form-data`. You could therefore
 argue that this is less RESTful but it's certainly faster and has the advantage of encapsulating the filename/mimetype
-in the object. It also plays nicely with the latest versions of swagger UI (swashbuckle).
+in the object. It also plays nicely with the latest versions of swagger UI (Swashbuckle).
 
-### Advantages
+### *Advantages*
 
 - Smaller payloads
-- `IFormFile` object encapsulates useful properties: filename, mimetype etc.
-- Plays nice with swagger ui
+- `IFormFile` object encapsulates useful properties: filename, mimetype etc
+- Plays nicely with swagger UI
 
-### Disadvantages
+### *Disadvantages*
 
-- Less RESTful (not JSON)
-- Dependeny on non base CLR type (`IFormFile`).
+- Less RESTful (`Content-Type: multipart/form-data`)
+- Dependency on non base CLR type (`IFormFile`)
