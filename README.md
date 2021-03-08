@@ -1,6 +1,6 @@
 # FileUploader
 
-File upload scenarios with asp.net core. 
+File upload scenarios with ASP.NET Core. 
 
 ## Upload file using a `byte []` embedded in a model
 
@@ -34,3 +34,10 @@ in the object. It also plays nicely with the latest versions of swagger UI (Swas
 
 - Less RESTful (`Content-Type: multipart/form-data`)
 - Dependency on non base CLR type (`IFormFile`)
+
+## Security considerations
+
+Two very good articles which talk about the security considerations when uploading files.
+
+- [OWASP, Unrestricted file upload](https://owasp.org/www-community/vulnerabilities/Unrestricted_File_Upload)
+- [Uploading  files in ASP.NET Core](https://docs.microsoft.com/en-us/aspnet/core/mvc/models/file-uploads?view=aspnetcore-5.0)
